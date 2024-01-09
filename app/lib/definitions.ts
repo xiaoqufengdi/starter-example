@@ -40,9 +40,12 @@ export type LatestInvoice = {
 };
 
 // The database returns a number for amount, but we later format it to a string with the formatCurrency function
+// LatestInvoiceRaw 类型使用了 Omit 工具类型，从 LatestInvoice 中排除了 'amount' 属性。然后，它添加了一个新的 amount 属性，
+// 但这次的类型是 number。 这表示从数据库返回的原始数据amount 的类型是数字。
 export type LatestInvoiceRaw = Omit<LatestInvoice, 'amount'> & {
   amount: number;
 };
+
 
 export type InvoicesTable = {
   id: string;
